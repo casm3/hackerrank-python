@@ -43,33 +43,7 @@
 # Precisa refatorar
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
-import re
-
-X, K = map(int, input().split())
-P = list(re.split(" ", input()))
-polynomial_sum = 0
-count = 0
-num = 1
-
-
-for value in P:
-    value = value.strip()
-    if value[0].isnumeric():
-        num = int(value[0])
-    if "**" in value and count > 0 and "+" in P[count-1]:
-        polynomial_sum += num * X ** int(value[-1])
-    elif "**" in value and count > 0 and "-" in P[count-1]:
-        polynomial_sum -= num * X ** int(value[-1])
-    elif "**" in value:
-        polynomial_sum += X ** int(value[-1])
-    elif value.isnumeric() and "-" in P[count-1]:
-        polynomial_sum -= int(value[-1])
-    elif value.isnumeric() and "+" in P[count-1]:
-        polynomial_sum += int(value[-1])
-    elif "+" in P[count-1]:
-        polynomial_sum += X
-    elif "-" in P[count-1]:
-        polynomial_sum -= X
-    count += 1
+x, K = map(int, input().split())
+P = input()
     
-print(polynomial_sum == K)
+print(eval(P) == K)
